@@ -1,6 +1,6 @@
 Package: adduser
 Status: install ok installed
-Depends: apt
+Depends: apt (>= 1.23-1)
 Conffiles:
  /notgoodfolder/lalala.conf
 Description: add and remove users and groups
@@ -10,8 +10,8 @@ Status: install ok installed
 Depends: adduser
 Conffiles:
  /etc/etc/etc/lala.conf
- /etc/etc/etc/lala.conf
-Description: commandline package manager
+ /etc/etc/etc/lolo.conf
+Description: commandline package manager.
  This package provides commandline tools for searching and
  managing as well as querying info about packages
  as a low-level lib.
