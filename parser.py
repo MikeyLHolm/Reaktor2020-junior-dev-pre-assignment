@@ -38,7 +38,7 @@ def parser(dic, lines):
 
 	return dic
 
-def main():
+def get_packages():
 
 	if os.path.isfile('\033[92m' + '/var/lib/dpkg/status' + '\033[0m'):
 		print(":::: Path exists ::::")
@@ -54,10 +54,9 @@ def main():
 	except IOError as error:
 		sys.exit(error)
 
+	global dic
 	dic = {}
 	dic = parser(dic, lines)
 
 	print (dic)
-
-if __name__ == "__main__":
-    main()
+	return (dic)

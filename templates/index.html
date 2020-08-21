@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Flask Tutorial</title>
-  </head>
-  <body>
-    {% extends "template.html" %}
-    {% block content %}
+{% extends "template.html" %}
 
-    <h1> My First Try Using Flask </h1>
-    <p> Flask is Fun </p>
+{% block head %}
+<title>Package viewer</title>
+{% endblock %}
 
-    {% endblock %}
-  </body>
-</html>
+{% block body %}
+<div class="content">
+	{% for key, val_dic in dictionary.items() %}
+		{% for key2, nested_value in val_dic.items() %}
+			{% if 'Depends' in key2 %}
+				<h3>DEPS</h3>
+				<li><a href="{{ nested_value }}"></a>{{ nested_value }}</li>
+			{% elif 'Description' in key2 %}
+				<h3>DESC</h3>
+				<li><a href="{{ nested_value }}"></a>{{ nested_value }}</li>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+</div>
+{% endblock %}

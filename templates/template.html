@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
- <head>
-   <meta charset="utf-8">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Flask Parent Template</title>
-   <link rel="stylesheet" href="{{ url_for('static',     filename='css/template.css') }}">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+   {% block head %}{% endblock %}
  </head>
  <body>
     <header>
@@ -18,8 +20,7 @@
       </div>
     </header>
 
-    {% block content %}
-    {% endblock %}
+    {% block body %}{% endblock %}
 
  </body>
 </html>
