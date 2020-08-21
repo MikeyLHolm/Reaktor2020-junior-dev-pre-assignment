@@ -1,31 +1,12 @@
 #!/usr/bin/python3
-import re
+import os.path, sys
 
-def parseDepends(str, depends):
-	# parse depends to a list.
-	print ("deps: " + str)
-	q = str.split(", ")
-	# print(type(q))
-	for zet in q:
-		z = zet.split(" ")
-	print (z)
-	depends.append(z)
-	print (depends)
-	return (depends)
+#	parser function:
+# 		returns parsed dictionary
+#	issues:
+#		parsing version numbers or "|" is incomplete
 
-def main():
-
-	filename = "status"
-	#filename = "text.txt"
-
-	#filu = open(filename, "r")
-
-	file = open(filename, "r")
-	lines = file.readlines()
-	file.close
-
-	dic = {}
-	depends = []
+def parser(dic, lines):
 
 	for line in lines:
 		if len(line.strip()) == 0:
@@ -42,9 +23,8 @@ def main():
 		if line.startswith('Depends'):
 			splitLine = line.split(":")
 			depName = splitLine[0].strip()
-			depValue = splitLine[1].strip()
+			depValue = splitLine[1].strip().split(", ")
 			dic[name][depName] = depValue
-			depends = parseDepends(dic[name][depName], depends)
 
 		if line.startswith('Description'):
 			splitLine = line.split(":")
@@ -56,26 +36,28 @@ def main():
 			descValue += line.rstrip()
 			dic[name][descName] = descValue
 
-		#print (d)
-		#parseDepends(d[name][depName])
+	return dic
 
-	#print (d)
+def main():
 
-	# with open(filename, "r") as f:
-	# 	for line in f:
-	# 		items = line.split(':')
-	# 		print(items[0])
+	if os.path.isfile('\033[92m' + '/var/lib/dpkg/status' + '\033[0m'):
+		print(":::: Path exists ::::")
+		filename = "/var/lib/dpkg/status"
+	else:
+		print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
+		#filename = "status"
+		filename = "text.txt"
 
-	# 		print(items[1:])
-	# 		key, values = items[0], items[1:]
-	# 		if key in {"Package", "Depends", "Description"}:
-	# 			d[key] = values
+	try:
+		with open(filename) as file:
+			lines = file.readlines()
+	except IOError as error:
+		sys.exit(error)
 
-	# print(json.dumps(d, indent=4))
-	# for k in d:
-	# 	print(k)
-	# 	for v in d[k]:
-	# 		print(v)
+	dic = {}
+	dic = parser(dic, lines)
+
+	print (dic)
 
 if __name__ == "__main__":
     main()
