@@ -45,7 +45,7 @@ def get_packages():
 		filename = "/var/lib/dpkg/status"
 	else:
 		print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
-		#filename = "status"
+		#filename = "demo.txt"
 		filename = "text.txt"
 
 	try:
@@ -58,5 +58,4 @@ def get_packages():
 	dic = {}
 	dic = parser(dic, lines)
 
-	print (dic)
 	return (dic)

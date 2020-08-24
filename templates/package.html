@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+
+	<h1> {{ package }} </h1>
+	{% for p, v in dictionary.items() %}
+		{% if p == package %}
+		{% for key, value in v.items() %}
+
+			{% if 'Depends' in key %}
+
+			<h3><em>Dependencies</em></h3>
+			{% for x in value %}
+				<li><a href="{{ x }}">{{ x }}</a></li>
+			{% endfor %}
+
+			<h3><em>Reverse Dependencies</em></h3>
+
+			{% for key, val_dic in dictionary.items() %}
+				{% for key2, nested_value in val_dic.items() %}
+					{% if 'Depends' in key2 %}
+						{% if package in nested_value %}
+						<li><a href="{{ key }}">{{ key }}</a></li>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			{% endif %}
+
+			{% if 'Description' in key %}
+			<h3><em>Description</em></h3>
+			<p>{{ value }}</p>
+			{% endif %}
+
+		{% endfor %}
+		{% endif %}
+	{% endfor %}
+
+</div>
+
+{% endblock %}

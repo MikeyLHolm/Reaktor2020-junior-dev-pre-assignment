@@ -51,8 +51,8 @@ def get_packages():
 		filename = "/var/lib/dpkg/status"
 	else:
 		print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
-		#filename = "status"
-		filename = "text.txt"
+		filename = "demo.txt"
+		#filename = "text.txt"
 
 	try:
 		with open(filename) as file:
@@ -72,6 +72,10 @@ def index():
 @app.route("/about")
 def about():
 	return render_template("about.html")
+
+@app.route("/<package>")
+def printPackage(package):
+	return render_template("package.html", package=package, dictionary=get_packages())
 
 if __name__ == "__main__":
 	app.run(debug=True)
