@@ -1,8 +1,6 @@
 from flask import Flask, render_template
 import os.path, sys
 
-#	https://www.youtube.com/watch?v=Z1RJmh_OqeA
-
 app = Flask(__name__)
 
 dic = {}
@@ -30,6 +28,8 @@ def parser(dic, lines):
 			splitLine = line.split(":")
 			depName = splitLine[0].strip()
 			depValue = splitLine[1].strip().split(", ")
+			# for val in depValue:
+			# 	val = val.split(" ")[0]
 			dic[name][depName] = depValue
 
 		if line.startswith('Description'):
@@ -43,6 +43,8 @@ def parser(dic, lines):
 			dic[name][descName] = descValue
 
 	return dic
+
+#	fix
 
 def get_packages():
 

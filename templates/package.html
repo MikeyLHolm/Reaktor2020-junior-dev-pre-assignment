@@ -11,9 +11,7 @@
 	{% for p, v in dictionary.items() %}
 		{% if p == package %}
 		{% for key, value in v.items() %}
-
 			{% if 'Depends' in key %}
-
 			<h3><em>Dependencies</em></h3>
 			{% for x in value %}
 				<li><a href="{{ x }}">{{ x }}</a></li>
