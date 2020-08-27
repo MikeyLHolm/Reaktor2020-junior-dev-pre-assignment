@@ -7,8 +7,6 @@ dic = {}
 
 #	parser function:
 # 		returns parsed dictionary
-#	issues:
-#		parsing version numbers or "|" is incomplete
 
 def parser(dic, lines):
 
@@ -25,11 +23,12 @@ def parser(dic, lines):
 			dic[name] = {}
 
 		if line.startswith('Depends'):
-			splitLine = line.split(":")
+			depValue = []
+			splitLine = line.split(": ")
 			depName = splitLine[0].strip()
-			depValue = splitLine[1].strip().split(", ")
-			# for val in depValue:
-			# 	val = val.split(" ")[0]
+			for val in splitLine[1].split(" | "):
+				for innerVal in val.split(", "):
+					depValue.append(innerVal.split(" ")[0].strip())
 			dic[name][depName] = depValue
 
 		if line.startswith('Description'):
@@ -44,17 +43,17 @@ def parser(dic, lines):
 
 	return dic
 
-#	fix
+# 	Uses demo file if user is not on system with ".../status" file.
+# 	Returns parsed dictionary.
 
 def get_packages():
 
-	if os.path.isfile('\033[92m' + '/var/lib/dpkg/status' + '\033[0m'):
-		print(":::: Path exists ::::")
+	if os.path.isfile('/var/lib/dpkg/status'):
+		print('\033[92m' + ":::: Path exists ::::" + '\033[0m')
 		filename = "/var/lib/dpkg/status"
 	else:
 		print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
 		filename = "demo.txt"
-		#filename = "text.txt"
 
 	try:
 		with open(filename) as file:
