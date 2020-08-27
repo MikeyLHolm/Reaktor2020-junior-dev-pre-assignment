@@ -14,6 +14,10 @@ On a Debian and Ubuntu systems, there is a file called /var/lib/dpkg/status that
 - The application must be available publicly on the internet. You can, for example, use Heroku to host it for free. Provide a link to the website in your job application.
 - The source code must also be available publicly in GitLab or GitHub, and a link provided in your job application.
 
+## Solution
+
+.....Stuff here.......
+
 ## Website
 
 https://mlindholm-reaktor-assignment.herokuapp.com/
