@@ -49,12 +49,12 @@ def parser(dic, lines):
 
 def get_packages():
 
-	if os.path.isfile('/var/lib/dpkg/status'):
-		print('\033[92m' + ":::: Path exists ::::" + '\033[0m')
-		filename = "/var/lib/dpkg/status"
-	else:
-		print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
-		filename = "demo.txt"
+	# if os.path.isfile('/var/lib/dpkg/status'):
+	# 	print('\033[92m' + ":::: Path exists ::::" + '\033[0m')
+	# 	filename = "/var/lib/dpkg/status"
+	# else:
+	# 	print('\033[92m' + ":::: Path doesn't exist. Using demo file. ::::" + '\033[0m')
+	filename = "demo.txt"
 
 	try:
 		with open(filename) as file:
