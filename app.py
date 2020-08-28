@@ -22,19 +22,13 @@ def parser(dic, lines):
 			name = nameLine.split(": ")[1]
 			dic[name] = {}
 
-		# if line.startswith('Depends'):
-		# 	depValue = []
-		# 	splitLine = line.split(": ")
-		# 	depName = splitLine[0].strip()
-		# 	for val in splitLine[1].split(" | "):
-		# 		for innerVal in val.split(", "):
-		# 			depValue.append(innerVal.split(" ")[0].strip())
-		# 	dic[name][depName] = depValue
-
 		if line.startswith('Depends'):
+			depValue = []
 			splitLine = line.split(": ")
 			depName = splitLine[0].strip()
-			depValue = splitLine[1].split(", ")
+			for val in splitLine[1].split(" | "):
+				for innerVal in val.split(", "):
+					depValue.append(innerVal.split(" ")[0].strip())
 			dic[name][depName] = depValue
 
 		if line.startswith('Description'):
