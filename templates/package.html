@@ -13,13 +13,13 @@
 		{% for key, value in v.items() %}
 			{% if 'Depends' in key %}
 			<h3><em>Dependencies</em></h3>
-			{% for x in value %}
+			{% for x in value|sort %}
 				<li><a href="{{ x }}">{{ x }}</a></li>
 			{% endfor %}
 
 			<h3><em>Reverse Dependencies</em></h3>
 
-			{% for key, val_dic in dictionary.items() %}
+			{% for key, val_dic in dictionary|dictsort %}
 				{% for key2, nested_value in val_dic.items() %}
 					{% if 'Depends' in key2 %}
 						{% if package in nested_value %}

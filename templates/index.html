@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class="content">
-	{% for key, val_dic in dictionary.items() %}
+	{% for key, val_dic in dictionary|dictsort %}
 		<li><a href="{{ key }}">{{ key }}</a></li>
 	{% endfor %}
 </div>
