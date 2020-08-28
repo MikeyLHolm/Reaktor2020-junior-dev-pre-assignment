@@ -1,9 +1,10 @@
 from flask import Flask, render_template
 import os.path, sys
+from collections import OrderedDict
 
 app = Flask(__name__)
 
-dic = {}
+dic = OrderedDict()
 
 #	parser function:
 # 		returns parsed dictionary
