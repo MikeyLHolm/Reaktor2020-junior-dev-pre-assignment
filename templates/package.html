@@ -8,7 +8,7 @@
 <div class="content">
 
 	<h1> {{ package }} </h1>
-	{% for p, v in dictionary.items() %}
+	{% for p, v in dictionary.items()|sort() %}
 		{% if p == package %}
 		{% for key, value in v.items() %}
 			{% if 'Depends' in key %}
