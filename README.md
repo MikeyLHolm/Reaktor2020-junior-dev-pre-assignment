@@ -1,5 +1,6 @@
 # Reaktor2020-junior-dev-pre-assignment
 My submission for Pre-assignment for junior developer positions @ Reaktor
+https://mlindholm-reaktor-assignment.herokuapp.com/
 
 ## Instructions
 https://www.reaktor.com/junior-dev-assignment/
@@ -23,10 +24,6 @@ _Stack: Python + Flask(render_template) + Jinja2 deployed to Heroku._
 - I'm using nested global dict to store the parsed info.
 - Sorting the data in Jinja with sort / dictsort.
 - If the required path does not exist this app uses mock_data provided in the assignment instead.
-
-## Website
-
-https://mlindholm-reaktor-assignment.herokuapp.com/
 
 ## Afterthoughts/Improvements
 
