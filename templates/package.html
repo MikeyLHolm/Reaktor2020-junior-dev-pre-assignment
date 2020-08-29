@@ -19,8 +19,8 @@
 
 			<h3><em>Reverse Dependencies</em></h3>
 
-			{% for key, val_dic in dictionary|dictsort %}
-				{% for key2, nested_value in val_dic.items() %}
+			{% for key, value_dict in dictionary|dictsort %}
+				{% for key2, nested_value in value_dict.items() %}
 					{% if 'Depends' in key2 %}
 						{% if package in nested_value %}
 						<li><a href="{{ key }}">{{ key }}</a></li>
