@@ -1,5 +1,6 @@
 # Reaktor2020-junior-dev-pre-assignment
-My submission for Pre-assignment for junior developer positions @ Reaktor
+My submission for Pre-assignment for junior developer positions @ [Reaktor](https://www.reaktor.com/).
+
 https://mlindholm-reaktor-assignment.herokuapp.com/
 
 ## Instructions
